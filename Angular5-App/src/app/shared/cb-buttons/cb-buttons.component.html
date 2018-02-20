@@ -1,0 +1,9 @@
+<div class="{{customDivClass}}" >
+    <ng-template ngFor let-btnItem [ngForOf]="btnsItemsCollection">
+      <button type="button" 
+      id="{{btnItem.id}}" class="{{btnItem.btnItemClass}}" 
+      (clickedBtn)="onBtnClicked(btnItem)"  [disabled]="btnItem.isDisabled">
+      <i aria-hidden="true"></i>{{btnItem.title}}
+      </button>
+    </ng-template>
+</div>
