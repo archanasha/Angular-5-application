@@ -1,0 +1,130 @@
+<h2>Common Buttons</h2>
+<hr>
+<div class="container-fluid">
+    <div class="d-flex flex-column">
+        <div class="col-md-12">
+            <h4>Single Toggle Button</h4>
+            <div class="zoom-checkbox w-100">
+                <cb-buttons customDivClass="cb-buttons" [isToggleBtn]="true">
+                    <buttons-item id="Zoom Test" [isTooltipEnabled]="true" activeTooltipText="Zoom out" inActiveTooltipText="Zoom In" (clickedBtn)="toggleZoom($event)"
+                        activeIconClass="fa fa-search-minus" inActiveIconClass="fa fa-search-plus" tooltipPlacement="bottom"
+                        btnItemClass="toggleButtons" btnActiveClass="cb-button-selected" [isActive]=true></buttons-item>
+                </cb-buttons>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h4>Single Button</h4>
+            <cb-buttons customDivClass="cb-buttons" [isToggleBtn]="false">
+                <buttons-item id="user" [isTooltipEnabled]="true" activeTooltipText="User Details" (clickedBtn)="toggleZoom($event)" activeIconClass="fa fa-user-plus"
+                    tooltipPlacement="bottom" btnItemClass="toggleButtons" btnActiveClass="cb-button-selected" [isActive]=true></buttons-item>
+            </cb-buttons>
+        </div>
+        <div class="col-md-12 customCls">
+            <h4>2 Toggle Buttons</h4>
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="Bar Graph" [isTooltipEnabled]=true activeIconClass="fa fa-bar-chart" activeTooltipText="Bar Graph" (clickedBtn)="onViewChangeClick($event)"
+                    tooltipPlacement="bottom" btnItemClass="cb-button-default" btnActiveClass="cb-button-selected" [isActive]="false"></buttons-item>
+                <buttons-item id="Pie Chart" [isTooltipEnabled]="true" activeIconClass="fa fa-pie-chart" activeTooltipText="Pie Chart" (clickedBtn)="onViewChangeClick($event)"
+                    btnItemClass="cb-button-default" btnActiveClass="cb-button-selected" tooltipPlacement="bottom" [isActive]="true"></buttons-item>
+            </cb-buttons>
+        </div>
+        <div class="col-md-12 customCls">
+            <h4>Multi Buttons</h4>
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="Go Left" [isTooltipEnabled]=false activeIconClass="fa fa-hand-o-left" activeTooltipText="Go Left" (clickedBtn)="onLeftClick($event)"
+                    tooltipPlacement="bottom" btnItemClass="cb-button-default" [isActive]="false"></buttons-item>
+                <buttons-item id="Go Right" [isTooltipEnabled]="false" activeIconClass="fa fa-hand-o-right" activeTooltipText="Go Right"
+                    (clickedBtn)="onViewRightClick($event)" btnItemClass="cb-button-default" tooltipPlacement="bottom" [isActive]="false"></buttons-item>
+            </cb-buttons>
+        </div>
+        <div class="col-md-12 customCls">
+            <h4>Multi Toggle Buttons</h4>
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="Bar Graph" [isTooltipEnabled]=true activeIconClass="fa fa-bar-chart" activeTooltipText="Bar Graph" (clickedBtn)="onViewChangeClick($event)"
+                    tooltipPlacement="bottom" btnItemClass="cb-button-default" btnActiveClass="cb-button-selected" [isActive]="true"></buttons-item>
+                <buttons-item id="Pie Chart" [isTooltipEnabled]="true" activeIconClass="fa fa-pie-chart" activeTooltipText="Pie Chart" (clickedBtn)="onViewChangeClick($event)"
+                    btnItemClass="cb-button-default" btnActiveClass="cb-button-selected" tooltipPlacement="bottom" [isActive]="false"></buttons-item>
+                <buttons-item id="Line Chart" [isTooltipEnabled]="true" activeIconClass="fa fa-line-chart" activeTooltipText="Line Chart"
+                    (clickedBtn)="onViewChangeClick($event)" btnItemClass="cb-button-default" btnActiveClass="cb-button-selected"
+                    tooltipPlacement="bottom" [isActive]="false"></buttons-item>
+            </cb-buttons>
+        </div>
+        <div class="col-md-12 customCls">
+            <h4>Predefined Button styles</h4>
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="addBtn" [isTooltipEnabled]="false" title="Add" (clickedBtn)="onViewChangeClick($event)" btnItemClass="cb-button-secondary"
+                    btnActiveClass="cb-button-primary" [isActive]="true"></buttons-item>
+                <buttons-item id="updateBtn" [isTooltipEnabled]="false" title="Update" (clickedBtn)="onViewChangeClick($event)" btnItemClass="cb-button-secondary"
+                    btnActiveClass="cb-button-primary" [isActive]="false"></buttons-item>
+                <buttons-item id="deleteBtn" [isTooltipEnabled]="false" title="Delete" (clickedBtn)="onViewChangeClick($event)" btnItemClass="cb-button-secondary"
+                    btnActiveClass="cb-button-primary" [isActive]="false"></buttons-item>
+            </cb-buttons>
+        </div>
+        <div class="col-md-2 customCls">
+            <h4>Button groups</h4>
+            <div class="d-flex justify-content-between">
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="primaryBtn" btnSizeClass="cb-button-lg" [isTooltipEnabled]="false" title="Primary" (clickedBtn)="onPrimaryBtnClick($event)" btnItemClass="cb-button-primary"
+                    [isActive]="false"></buttons-item>
+            </cb-buttons>
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="primaryBtn" btnSizeClass="cb-button-md"  [isTooltipEnabled]="false" title="Primary" (clickedBtn)="onPrimaryBtnClick($event)" btnItemClass="cb-button-primary"
+                    [isActive]="false"></buttons-item>
+            </cb-buttons>
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="primaryBtn" btnSizeClass="cb-button-sm" [isTooltipEnabled]="false" title="Primary" (clickedBtn)="onPrimaryBtnClick($event)" btnItemClass="cb-button-primary"
+                    [isActive]="false"></buttons-item>
+            </cb-buttons>
+        </div>
+        </div>
+        <div class="col-md-12 customCls">
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="secondaryBtn" [isTooltipEnabled]=false title="Secondary" (clickedBtn)="onSecondaryBtnClick($event)" btnItemClass="cb-button-secondary"
+                    [isActive]="false"></buttons-item>
+            </cb-buttons>
+        </div>
+        <div class="col-md-12 customCls">
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="defaultBtn" [isTooltipEnabled]=false title="Default" (clickedBtn)="onDefaultBtnClick($event)" btnItemClass="cb-button-defaultBtn"
+                    [isActive]="false"></buttons-item>
+            </cb-buttons>
+        </div>
+        <div class="col-md-12 customCls">
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="successBtn" [isTooltipEnabled]=false title="Success" (clickedBtn)="onSuccessBtnClick($event)" btnItemClass="cb-button-success"
+                    [isActive]="false"></buttons-item>
+            </cb-buttons>
+        </div>
+        <div class="col-md-12 customCls">
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="dangerBtn" [isTooltipEnabled]=false title="Danger" (clickedBtn)="onDangerBtnClick($event)" btnItemClass="cb-button-danger"
+                    [isActive]="false"></buttons-item>
+            </cb-buttons>
+        </div>
+        <div class="col-md-12 customCls">
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="warningBtn" [isTooltipEnabled]=false title="Warning" (clickedBtn)="onWarningBtnClick($event)" btnItemClass="cb-button-warning"
+                    [isActive]="false"></buttons-item>
+            </cb-buttons>
+        </div>
+        <div class="col-md-12 customCls">
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="infoBtn" [isTooltipEnabled]=false title="Info" (clickedBtn)="onInfoBtnClick($event)" btnItemClass="cb-button-info"
+                    [isActive]="false"></buttons-item>
+            </cb-buttons>
+        </div>
+        <div class="col-md-12 customCls">
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="linkBtn" [isTooltipEnabled]=false title="Link" (clickedBtn)="onLinkBtnClick($event)" btnItemClass="cb-button-link"
+                    [isActive]="false"></buttons-item>
+            </cb-buttons>
+        </div>
+        <div class="col-md-12 customCls">
+            <cb-buttons customDivClass="cb-buttons btn-group" [isToggleBtn]="false">
+                <buttons-item id="diableBtn" [isDisabled]="true" [isTooltipEnabled]=false title="Disable" (clickedBtn)="onSecondaryBtnClick($event)"
+                    btnItemClass="cb-button-secondary" [isActive]="false"></buttons-item>
+            </cb-buttons>
+        </div>
+
+    </div>
+</div>

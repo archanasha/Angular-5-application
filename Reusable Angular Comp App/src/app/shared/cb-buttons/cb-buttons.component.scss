@@ -1,0 +1,64 @@
+
+@mixin border($borderW, $borderS ,$borderC, $borderR) {
+    border-width: $borderW;
+    border-color: $borderC;
+    border-style: $borderS;
+    border-radius: $borderR;
+}
+$CBborders:(
+    defaultBtn: (1px ,solid, #ccc, 5px),
+    selected: (1px ,solid, darkgray, 5px),
+);
+
+$buttons-width:(
+    sm: (1.5,.875rem, (.25rem .5rem)),
+    md:(1.5,1rem,(.375rem .75rem)),
+    lg:(1.5,1.25rem,(.5rem 1rem)),
+);
+
+$buttons: (
+  danger: (#dc3545, #fff),
+  success: (#218838, #fff),
+  warning: (#ffc107, #000),
+  primary: (#005691, #fff),
+  default: (#d9d9d9, #000),
+  info: (#17a2b8, #fff),
+  selected: (grey, #000 ),
+  secondary: (#d9d9d9 ,#fff),
+  link: (transparent, #007bff),
+  defaultBtn: (transparent, #000),
+);
+.cb-button {
+    @each $name, $colors in $buttons{
+        $bgcolor: nth($colors , 1 );
+        $fontcolor: nth($colors , 2 );
+
+        &-#{$name} {
+            background-color: $bgcolor;
+            color: $fontcolor;
+        }
+        &-#{$name}:focus {
+            box-shadow: none !important;
+        }
+    }
+    @each $name, $CBborder in $CBborders{
+        $bordersW: nth($CBborder , 1 );
+        $bordersS: nth($CBborder , 2 );
+        $bordersC: nth($CBborder , 3 );
+        $bordersR: nth($CBborder , 4 );
+        &-#{$name} {
+          @include border($bordersW, $bordersS,$bordersC,$bordersR)
+        }
+    }
+    @each $name, $button-w in $buttons-width{
+        $lineHeight: nth($button-w , 1 );
+        $fontSize: nth($button-w , 2 );
+        $padding: nth($button-w , 3 );
+
+        &-#{$name} {
+          line-height: $lineHeight;
+          font-size: $fontSize;
+          padding: $padding;
+        }
+    }
+}
