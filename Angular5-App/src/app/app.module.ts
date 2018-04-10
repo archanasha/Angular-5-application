@@ -2,48 +2,47 @@ import { CbButtonModule } from './shared/cb-buttons/cb-buttons.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { ShoppingComponent } from './shopping/shopping.component';
-import { RecipeComponent } from './recipe/recipe.component';
-import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
-import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-item.component';
-import { RecipeDetailsComponent } from './recipe/recipe-details/recipe-details.component';
-import { ShoppingEditComponent } from './shopping/shopping-list/shopping-edit/shopping-edit.component';
-import { ShoppingListComponent } from './shopping/shopping-list/shopping-list.component';
-import { DropdownDirective } from './shared/dropdown.directive';
-import { ShoppingService } from './shopping/shopping.service';
 import { AppRoutingModule } from './app-routing.module';
-import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.component';
-import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
+import { RecipeService } from './recipe/recipe.service';
+import { DataStorageService } from './shared/data-storage.service';
+import { AuthService } from './auth/auth.service';
+import { AuthGaurdService } from './auth/auth-gaurd.service';
+import { RecipeModule } from './recipe/recipe.module';
+import { SharedModule } from './shared/shared.module';
+import { ShoppingService } from './shopping/shopping.service';
+import { ShoppingModule } from './shopping/shopping.module';
+import { AuthModule } from './auth/auth.module';
+import { HeaderComponent } from './shared/header/header.component';
+import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { AuthInterceptor } from './shared/auth.intercetor';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingComponent,
-    RecipeComponent,
-    RecipeListComponent,
-    RecipeItemComponent,
-    RecipeDetailsComponent,
-    ShoppingEditComponent,
-    ShoppingListComponent,
-    DropdownDirective,
-    RecipeStartComponent,
-    RecipeEditComponent,
     FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
+    HttpClientModule,
     AppRoutingModule,
     CbButtonModule,
-    ReactiveFormsModule
+    RecipeModule,
+    SharedModule,
+    ShoppingModule,
+    AuthModule,
   ],
-  providers: [ShoppingService],
+  providers: [
+    ShoppingService,
+    RecipeService,
+    DataStorageService,
+    AuthService,
+    AuthGaurdService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor , multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

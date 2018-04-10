@@ -76,6 +76,11 @@ export class RecipeService {
     this.shoppingService.onAddIngridientToList(ingredients);
   }
 
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
   addRecipe(recipe: Recipe) {
     this.recipes.push(recipe);
     this.recipeChanged.next(this.recipes.slice());
@@ -83,6 +88,10 @@ export class RecipeService {
 
   updateRecipe(index: number, newRecipe: Recipe) {
     this.recipes[index] = newRecipe;
+    this.recipeChanged.next(this.recipes.slice());
+  }
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
     this.recipeChanged.next(this.recipes.slice());
   }
 }

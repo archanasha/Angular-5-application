@@ -1,18 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RecipeComponent } from './recipe/recipe.component';
 import { ShoppingListComponent } from './shopping/shopping-list/shopping-list.component';
-import { RecipeDetailsComponent } from './recipe/recipe-details/recipe-details.component';
-import { RecipeStartComponent } from './recipe/recipe-start/recipe-start.component';
-import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/recipes', pathMatch: 'full'},
-    { path: 'recipes', component: RecipeComponent, children: [
-      { path: 'new', component: RecipeEditComponent},
-      { path: ':id', component: RecipeDetailsComponent},
-      { path: ':id/edit', component: RecipeEditComponent},
-    ]},
+  { path: '', component: HomeComponent},
+    // lazy loading
+    // { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule', canLoad: [AuthGuard] }
     { path: 'shopping-list', component: ShoppingListComponent},
 ];
 

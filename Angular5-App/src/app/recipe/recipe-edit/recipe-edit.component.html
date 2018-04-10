@@ -20,13 +20,14 @@
         <div class="col-xs-12">
           <div class="form-group">
             <label for="imageURL">ImageURL</label>
-            <input type="text" id="imageURL" formControlName="imagePath" class="form-control">
+            <input type="text" id="imageURL" formControlName="imagePath" 
+            #imageURL class="form-control">
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <img src="" class="img-responsive">
+          <img [src]="imageURL.value" class="img-responsive">
         </div>
       </div>
       <div class="row">
@@ -49,7 +50,8 @@
               <input type="number" formControlName="quantity" class="form-control">
             </div>
             <div class="col-xs-2">
-              <button class="btn btn-danger">X</button>
+              <button type="button" class="btn btn-danger"
+              (click)="onDeleteIngredient(i)">X</button>
             </div>
           </div>
           <hr>
