@@ -1,1 +1,6 @@
-<p>live-training works!</p>
+<section class="live-training" fxLayout="column" fxLayoutAlign="center center">
+  <mat-progress-spinner mode="determinate" [value]="progress"></mat-progress-spinner>
+  <h1>{{progress}}%</h1>
+  <p>Keep going!</p>
+  <button mat-raised-button color="warn" (click)="stopProgress()">Stop</button>
+</section>
