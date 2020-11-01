@@ -1,36 +1,25 @@
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from '@angular/fire/firebase.app.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
 import { HomeComponent } from './home/home.component';
-import { MaterialModule } from './material.module';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SideNavComponent } from './navigation/side-nav/side-nav.component';
 import { DialogComponent } from './shared/dialog.component';
+import { SharedModule } from './shared/shared.module';
+import { UIService } from './shared/ui-service';
 import { ExerciseService } from './training/exercise.service';
-import { LiveTrainingComponent } from './training/live-training/live-training.component';
-import { NewTrainingComponent } from './training/new-training/new-training.component';
-import { PastTrainingComponent } from './training/past-training/past-training.component';
-import { TrainingComponent } from './training/training.component';
-import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
-    LoginComponent,
-    TrainingComponent,
-    LiveTrainingComponent,
-    PastTrainingComponent,
-    NewTrainingComponent,
     HomeComponent,
     HeaderComponent,
     SideNavComponent,
@@ -41,13 +30,12 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestor
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MaterialModule,
-    FlexLayoutModule,
-    FormsModule,
+    SharedModule,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AuthModule,
   ],
-  providers: [AuthService, ExerciseService],
+  providers: [AuthService, ExerciseService, UIService],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]
 })
