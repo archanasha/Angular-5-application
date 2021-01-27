@@ -4,9 +4,11 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import * as fromRoot from './app.reducer';
 import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { HomeComponent } from './home/home.component';
@@ -34,6 +36,7 @@ import { ExerciseService } from './training/exercise.service';
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
+    StoreModule.forRoot(fromRoot.reducers)
   ],
   providers: [AuthService, ExerciseService, UIService],
   bootstrap: [AppComponent],

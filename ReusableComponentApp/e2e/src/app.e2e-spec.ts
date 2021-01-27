@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('reusable-component-app App', () => {
+describe('workspace-project App', () => {
   let page: AppPage;
 
   beforeEach(() => {

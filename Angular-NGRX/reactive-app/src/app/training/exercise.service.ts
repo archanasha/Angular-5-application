@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Store } from '@ngrx/store';
 import { Subject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UIService } from '../shared/ui-service';
 import { Exercise } from './exercise.model';
+import * as fromRoot from '../app.reducer';
+import * as UI from '../shared/ui.actions';
 
 @Injectable({
     providedIn: 'root',
@@ -19,10 +22,11 @@ export class ExerciseService {
     private runningExercise: Exercise;
 
     constructor(private angularFirestore: AngularFirestore,
-        private uiService: UIService) { }
+        private uiService: UIService,
+        private store: Store<fromRoot.State>) { }
 
     fetchAvailableExercises() {
-        this.uiService.loadingStatusChanged.next(true);
+        this.store.dispatch(new UI.StartLoading());
         this.subscriptions.push(this.angularFirestore.collection('availableExercises').snapshotChanges().pipe(
             map(docArray => {
                 return docArray.map(doc => {
@@ -34,11 +38,11 @@ export class ExerciseService {
                     } as Exercise;
                 })
             })).subscribe(excercises => {
-                this.uiService.loadingStatusChanged.next(false);
+                this.store.dispatch(new UI.StopLoading());
                 this.availableExercises = excercises;
                 this.exercisesChanged.next([...this.availableExercises]);
             }, error => {
-                this.uiService.loadingStatusChanged.next(false);
+                this.store.dispatch(new UI.StopLoading());
                 this.exercisesChanged.next(null);
                 this.uiService.showSnackBar('Excercies cannot loaded, Plese try again later!', null, 3000)
             }));
@@ -77,14 +81,14 @@ export class ExerciseService {
     }
 
     fetchCompletedOrCancelledExercises() {
-        this.uiService.loadingStatusChanged.next(true);
+        this.store.dispatch(new UI.StartLoading());
         this.subscriptions.push(this.angularFirestore.collection('finishedExercises').
             valueChanges().
             subscribe((exerscises: Exercise[]) => {
-                this.uiService.loadingStatusChanged.next(false);
+                this.store.dispatch(new UI.StopLoading());
                 this.finishedExercisesChanged.next(exerscises);
             }, error => {
-                this.uiService.loadingStatusChanged.next(false);
+                this.store.dispatch(new UI.StopLoading());
                 this.uiService.showSnackBar('You not started your workout! Start now :-)', null, 3000)
             }));
     }

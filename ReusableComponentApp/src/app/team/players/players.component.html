@@ -1,0 +1,19 @@
+<div class="player-container">
+  <div class="add-player">
+    <label>{{playerChildTitle}} Name:
+      <input type="text" class="form-control" [(ngModel)]="playerName" placeholder="name">
+    </label>
+    <button class="btn btn-primary add-button" (click)="onAddTeam()" [disabled]="!playerName">Add Team</button>
+    <p class="player-text" *ngIf="playerName">Player name is {{playerName | uppercase}}</p>
+  </div>
+
+  <div style="margin-top: 8%;">
+    <h4>Squads <img src="/assets/images/sports_cricket1.png" alt="image"></h4>
+    <ul class="player-list">
+      <li *ngFor="let player of players">
+        <span class="badge" [style.background-color]="(player.id < 12) ? 'skyblue' : 'gray'">{{player.id}}</span>
+        {{player.name}}
+      </li>
+    </ul>
+  </div>
+</div>

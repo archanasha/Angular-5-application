@@ -1,10 +1,24 @@
-import { Component, EventEmitter } from '@angular/core';
+import { NumberSymbol } from '@angular/common';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
+  // styles: [`
+  //   h2 {
+  //     color: red;
+  //   }
+  // `]
 })
 export class AppComponent {
-  title = 'Common Components';
+
+  interpolationTitle: string = 'Team';
+  playerTitle: string = 'Criketer';
+  count: number;
+
+  countPlayers($event) {
+    this.count = $event;
+  }
+
 }

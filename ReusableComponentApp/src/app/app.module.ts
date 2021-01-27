@@ -1,21 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { CbButtonsModule } from './shared/cb-buttons/cb-buttons.module';
-import { ButtonsComponent } from './buttons/buttons.component';
+import { PlayersComponent } from './team/players/players.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonsComponent,
+    PlayersComponent
   ],
   imports: [
     BrowserModule,
-    SharedModule,
-    CbButtonsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
